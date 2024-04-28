@@ -1,0 +1,32 @@
+#ifndef REDMETRO_H
+#define REDMETRO_H
+#include <string>
+#include "linea.h"
+using namespace std;
+
+class RedMetro
+{
+    
+    
+private:
+    
+public:
+    string nombre;
+    Linea* lineas;
+    RedMetro(string nombre);
+    //Metodos
+    
+    
+    void setNombre(string nombre);
+   string getNombre() ;
+    void setLineas(Linea* lineas);
+    Linea* getLineas() const;
+    
+    void AgregarEstacion();
+    void EliminarEstacion();
+    
+    
+    
+};
+
+#endif // REDMETRO_H
