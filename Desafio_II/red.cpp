@@ -1,3 +1,6 @@
 #include "red.h"
 
-Red::Red() {}
+Red::Red() {
+   public int años;
+
+}

@@ -7,9 +7,11 @@ SOURCES += \
         estacion.cpp \
         linea.cpp \
         main.cpp \
-        redmetro.cpp
+        redmetro.cpp \
+        utilidades.cpp
 
 HEADERS += \
     estacion.h \
     linea.h \
-    redmetro.h
+    redmetro.h \
+    utilidades.h

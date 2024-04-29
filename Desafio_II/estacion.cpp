@@ -1,10 +1,27 @@
 #include "estacion.h"
 #include <string>
 
+//Solo tiene constructor y encapsulamiento
+
 Estacion::Estacion(string nombre, int num, string linea) {
     this->nombre=nombre;
     this->numEstacion=num;
     this->linea=linea;
+    this->siguiente=NULL;
+    this->anterior=NULL;
+}
+
+Estacion::Estacion() {
+
+}
+
+
+void Estacion::setNumTransferencias(int num) {
+    this->numTransferencias = num;
+}
+
+int Estacion::getNumTransferencias() {
+    return numTransferencias;
 }
 
 void Estacion::setNumEstacion(int num) {
@@ -27,7 +44,7 @@ void Estacion::setLineasTransferencia(Estacion* lineasTransferencia) {
     this->lineasTransferencia = lineasTransferencia;
 }
 
-Estacion* Estacion::getLineasTransferencia() {
+Estacion* Estacion::getLineasTransferencia() {  //Es un arreglo
     return lineasTransferencia;
 }
 

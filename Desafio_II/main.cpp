@@ -1,9 +1,20 @@
 #include <iostream>
-
+#include "redmetro.h"
 using namespace std;
 
 int main()
 {
-    cout << "Hello World!" << endl;
+    RedMetro metro1("metro de malaga");
+
+
+
+
+
+
+
+
+
+
+
     return 0;
 }
