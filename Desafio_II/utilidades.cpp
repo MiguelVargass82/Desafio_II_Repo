@@ -14,3 +14,29 @@ Estacion* Utilidades::agregarEstacion(Estacion estacion, Estacion* arreglo, int 
     delete[] arreglo;
     return nuevoArreglo;
 }
+
+Linea* Utilidades::agregarLinea(Linea estacion, Linea* arreglo, int longitud){   //Esta funcion va a alargar el arreglo una posicion y luego le va a agregar el dato que necesitamos
+    Linea* nuevoArreglo = new Linea[longitud+1];
+    for(int i=0; i<=longitud;i++){
+        if(i<longitud){
+            nuevoArreglo[i]=arreglo[i];
+        }
+        else{
+            nuevoArreglo[i]=estacion;
+        }
+    }
+    delete[] arreglo;
+    return nuevoArreglo;
+}
+
+void LiberarArrEstaciones(Estacion** arreglo, int num){
+    for(int i =0;i<num;i++){
+        delete[] arreglo[i];
+    }
+}
+
+void LiberarArrLineas(Estacion** arreglo, int num){
+    for(int i =0;i<num;i++){
+        delete[] arreglo[i];
+    }
+}

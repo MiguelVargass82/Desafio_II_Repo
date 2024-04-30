@@ -1,10 +1,17 @@
 #include "redmetro.h"
+#include "utilidades.h"
+#include <iostream>
+#include <string>
+using namespace std;
+
 
 // Constructor
 RedMetro::RedMetro(string nombre) {
+    cout<<"Hola soy una red<<";
+
     this->nombre = nombre;
-    this->numLineas=0;
-    this->lineas=nullptr;
+    this->numLineas=1;
+    this->lineas= new Linea*[1];
 }
 
 // Métodos de encapsulamiento para el atributo 'nombre'
@@ -17,11 +24,11 @@ string RedMetro::getNombre() {
 }
 
 // Métodos de encapsulamiento para el atributo 'lineas'
-void RedMetro::setLineas(Linea* lineas) {
+void RedMetro::setLineas(Linea** lineas) {
     this->lineas = lineas;
 }
 
-Linea* RedMetro::getLineas() const {
+Linea** RedMetro::getLineas() const {
     return lineas;
 }
 
@@ -34,23 +41,41 @@ int RedMetro::getNumLineas(){
 }
 
 
-void RedMetro::AgregarEstacion(){
-
-
-}
-
-void RedMetro::EliminarEstacion(){
-
-
-
-}
-
-
 void RedMetro::AgregarLinea(){
-    if(numLineas==0){   //Es la primera linea
-        this->lineas
 
-    }
+
+
+        cout<<"Ingrese la linea a la cual pertenece la estacion de la cual va a iniciar la linea"<<endl;
+        int eleccion;
+        for(int i=0;i<numLineas;i++){
+            cout<<i+1<<")"<<lineas[i]->getNombre()<<endl;
+        }
+        cout<<"Seleccione una opcion"<<endl;
+        cin>>eleccion;
+        eleccion=eleccion-1;
+
+        Linea* lineaAux = lineas[eleccion]; //Linea auxiliar
+
+        cout<<"Ingrese la estacion de la cual va a iniciar la linea"<<endl;
+        for (int i=0;i<lineaAux->getNumEstaciones();i++){
+            cout<<i+1<<")"<<lineaAux->getEstaciones()[i]->getNombre()<<endl;
+        }
+        cout<<"Seleccione una opcion"<<endl;
+        cin>>eleccion;
+        eleccion=eleccion-1;
+        Estacion* estacionAux = lineaAux->getEstaciones()[eleccion];
+
+
+
+
+
+
+        string nomPrimeraLinea;
+        cout<<"Ingrese el nombre de la linea que quiere crear"<<endl;
+        getline(std::cin, nomPrimeraLinea);
+
+
+
 
 
 

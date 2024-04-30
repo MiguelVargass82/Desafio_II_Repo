@@ -8,17 +8,18 @@ class Estacion
 {
 private:
     string nombre;
-    Estacion* lineasTransferencia;  //Arreglo que contendra las lineas de transferencia que tiene la estacion
-    Estacion* siguiente;
-    Estacion* anterior;
+    Estacion** lineasTransferencia;  //Arreglo que contendra las lineas de transferencia que tiene la estacion
     float tiempoSiguiente;
     float tiempoAnterior;
     string linea;
     int numEstacion;    //Numero que le corresponde en la linea
     int numTransferencias;  //Numero de lineas alternas que tiene (nos sirve para tener control del arreglo dinamico)
-public:
+
+
+public: //Solo tiene metodos de encapsulamiento
 
     Estacion(string nombre, int num, string linea);
+
     Estacion();
 
     void setNumTransferencias(int num);
@@ -32,14 +33,8 @@ public:
     void setNombre(string nombre);
     string getNombre();
 
-    void setLineasTransferencia(Estacion* lineasTransferencia);
-    Estacion* getLineasTransferencia();
-
-    void setSiguiente(Estacion* siguiente);
-    Estacion* getSiguiente();
-
-    void setAnterior(Estacion* anterior);
-    Estacion* getAnterior();
+    void setLineasTransferencia(Estacion** lineasTransferencia);
+    Estacion** getLineasTransferencia();
 
     void setTiempoSiguiente(float tiempoSiguiente);
     float getTiempoSiguiente();

@@ -7,8 +7,6 @@ Estacion::Estacion(string nombre, int num, string linea) {
     this->nombre=nombre;
     this->numEstacion=num;
     this->linea=linea;
-    this->siguiente=NULL;
-    this->anterior=NULL;
 }
 
 Estacion::Estacion() {
@@ -40,28 +38,12 @@ string Estacion::getNombre() {
     return nombre;
 }
 
-void Estacion::setLineasTransferencia(Estacion* lineasTransferencia) {
+void Estacion::setLineasTransferencia(Estacion** lineasTransferencia) {
     this->lineasTransferencia = lineasTransferencia;
 }
 
-Estacion* Estacion::getLineasTransferencia() {  //Es un arreglo
+Estacion** Estacion::getLineasTransferencia() {  //Es un arreglo
     return lineasTransferencia;
-}
-
-void Estacion::setSiguiente(Estacion* siguiente) {
-    this->siguiente = siguiente;
-}
-
-Estacion* Estacion::getSiguiente() {
-    return siguiente;
-}
-
-void Estacion::setAnterior(Estacion* anterior) {
-    this->anterior = anterior;
-}
-
-Estacion* Estacion::getAnterior() {
-    return anterior;
 }
 
 void Estacion::setTiempoSiguiente(float tiempoSiguiente) {
