@@ -19,7 +19,7 @@ void LiberarArrLineas(Estacion** arreglo, int num){
 
 
 
-Estacion** Utilidades::agregarEstacion(Estacion* estacion, Estacion** arreglo, int longitud){   //Esta funcion va a alargar el arreglo una posicion y luego le va a agregar el dato que necesitamos
+Estacion** Utilidades::agregarEstacionArreglo(Estacion* estacion, Estacion** arreglo, int longitud){   //Esta funcion va a alargar el arreglo una posicion y luego le va a agregar el dato que necesitamos
     Estacion** nuevoArreglo = new Estacion*[longitud+1];
     for(int i=0; i<=longitud;i++){
         if(i<longitud){
@@ -37,7 +37,7 @@ Estacion** Utilidades::agregarEstacion(Estacion* estacion, Estacion** arreglo, i
     return nuevoArreglo;
 }
 
-Linea** Utilidades::agregarLinea(Linea* linea, Linea** arreglo, int longitud){   //Esta funcion va a alargar el arreglo una posicion y luego le va a agregar el dato que necesitamos
+Linea** Utilidades::agregarLineaArreglo(Linea* linea, Linea** arreglo, int longitud){   //Esta funcion va a alargar el arreglo una posicion y luego le va a agregar el dato que necesitamos
     Linea** nuevoArreglo = new Linea*[longitud+1];
     for(int i=0; i<=longitud;i++){
         if(i<longitud){

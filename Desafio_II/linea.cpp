@@ -8,7 +8,7 @@ Linea::Linea() {
 }
 Linea::Linea(int num) {   //Constructor que se invocara cuando se crea una nueva linea
     string nombre;
-    cout<<"Ingrese el nombre de la nueva linea"<<endl;
+    cout<<"Ingrese el nombre de la nueva linea:"<<endl;
     getline(cin,nombre);
     this->nombre = nombre;
 }

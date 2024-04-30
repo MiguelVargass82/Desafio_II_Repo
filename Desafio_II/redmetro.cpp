@@ -18,10 +18,7 @@ using namespace std;
     string nomEstacion;
     getline(cin, nomEstacion);
     lineaAux->getEstaciones()[0]=new Estacion(nomEstacion,0,lineaAux->getNombre());
-
-
     this->numLineas=1;
-
 }
 
 // Métodos de encapsulamiento para el atributo 'nombre'
