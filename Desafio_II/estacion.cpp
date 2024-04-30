@@ -12,7 +12,9 @@ Estacion::Estacion(string nombre, int num, string linea) {
 Estacion::Estacion() {
 
 }
-
+Estacion::~Estacion(){
+    delete this;
+}
 
 void Estacion::setNumTransferencias(int num) {
     this->numTransferencias = num;

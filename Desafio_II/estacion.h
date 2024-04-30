@@ -21,7 +21,7 @@ public: //Solo tiene metodos de encapsulamiento
     Estacion(string nombre, int num, string linea);
 
     Estacion();
-
+    ~Estacion();
     void setNumTransferencias(int num);
     int getNumTransferencias();
 
@@ -48,5 +48,8 @@ public: //Solo tiene metodos de encapsulamiento
 
 
 };
+
+
+
 
 #endif // ESTACION_H

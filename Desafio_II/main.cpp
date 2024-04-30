@@ -60,11 +60,13 @@ int main()
                 break;
 
             default:    //Opcion de posicion intermedia
-                cout<<"Despues de que estacion le gustaria crear la nueva estacion "<<endl;
-                for (int i=0;i<lineaSel->getNumEstaciones()-1;i++){
-                    cout<<i+1<<") "<<lineaSel->getEstaciones()[i]->getNombre();
-                }
 
+                cout<<"Numero de estaciones que tiene la linea: "<<lineaSel->getNumEstaciones()<<endl;
+                cout<<"Despues de que estacion le gustaria crear la nueva estacion "<<endl;
+                for (int i=0;i<lineaSel->getNumEstaciones();i++){ //Le restamos uno para que no cuente el extremo mayor
+                    cout<<i+1<<") "<<lineaSel->getEstaciones()[i]->getNombre()<<endl;
+                }
+                cout<<"Seleccione: ";
                 int eleccion4;
                 cin>>eleccion4;     //FALTA VALIDACION
                 eleccion4=eleccion4-1;
@@ -77,14 +79,19 @@ int main()
 
 
 
-                string nombreNuevaEstacion;
+                string nombreNuevaEstacion="";
                 cout<<"Cual va a ser el nombre de la nueva estacion: "<<endl;
-                getline(cin,nombreNuevaEstacion);
-                Estacion* estacionNueva = new Estacion(nombreNuevaEstacion,estacionAnterior->getNumEstacion(),lineaSel->getNombre());
+                cin >> nombreNuevaEstacion;
+
+
+                //getline(cin,nombreNuevaEstacion);
+
+                Estacion* estacionNueva = new Estacion(nombreNuevaEstacion,estacionAnterior->getNumEstacion()+1,lineaSel->getNombre());
 
 
 
-                lineaSel->setEstaciones(Utilidades::agregarEstacionArreglo(estacionNueva,lineaSel->getEstaciones(),lineaSel->getNumEstaciones()));
+                lineaSel->setEstaciones(Utilidades::agregarEstacionArreglo(estacionNueva,lineaSel->getEstaciones(),lineaSel->getNumEstaciones()));  //Aqui hay un error
+                cout<<"Bandera"<<endl;
                 lineaSel->setNumEstaciones(lineaSel->getNumEstaciones()+1); //Agregamos el objeto al arreglo de estaciones
 
                 cout<<"Cuanto tiempo se demora de la estacion "<<estacionAnterior->getNombre()<<" hasta la estacion "<<nombreNuevaEstacion<<" : "<<endl;
