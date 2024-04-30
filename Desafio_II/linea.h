@@ -15,7 +15,7 @@ private:
 public:
     //Encapsulamiento
     Linea();
-    Linea(string nombre);
+    Linea(int num);
     string getNombre();
     void setNombre(string nombre);
     void setEstaciones(Estacion** estaciones);

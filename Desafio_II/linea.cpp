@@ -1,13 +1,16 @@
 #include "linea.h"
 #include <string>
+#include <iostream>
 using namespace std;
 
 //Encapsulamiento
 Linea::Linea() {
 }
-Linea::Linea(string nombre) {   //Constructor que se invocara cuando se crea un aanueva linea
+Linea::Linea(int num) {   //Constructor que se invocara cuando se crea una nueva linea
+    string nombre;
+    cout<<"Ingrese el nombre de la nueva linea"<<endl;
+    getline(cin,nombre);
     this->nombre = nombre;
-
 }
 
 string Linea::getNombre(){
