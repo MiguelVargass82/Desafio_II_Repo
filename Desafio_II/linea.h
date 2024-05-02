@@ -9,7 +9,7 @@ class Linea
 {
 private:
     string nombre;
-    Estacion** estaciones;   //Arreglo de estaciones que posee (el orden del arreglo no es necesariamente el de las estaciones)
+    Estacion* estaciones;   //Arreglo de estaciones que posee (el orden del arreglo no es necesariamente el de las estaciones)
     int numEstaciones;  //Numero de estaciones que tiene la linea(nos ayuda a tener contro del arreglo)
 
 public:
@@ -18,8 +18,8 @@ public:
     Linea(int num);
     string getNombre();
     void setNombre(string nombre);
-    void setEstaciones(Estacion** estaciones);
-    Estacion** getEstaciones();
+    void setEstaciones(Estacion* estaciones);
+    Estacion* getEstaciones();
     void setNumEstaciones(int num);
     int getNumEstaciones();
 

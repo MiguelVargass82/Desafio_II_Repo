@@ -26,19 +26,18 @@ int main()
 
 
 
-
+        Linea lineaSel;
         switch (eleccion1) {
         case 1:
             int eleccion2;
             cout<<"Seleccione la linea en la cual quiere ingresar la nueva estacion: "<<endl;
-                for(int i=0; i<metro1.getNumLineas();i++){
-                cout<<i+1<<") "<<metro1.getLineas()[i]->getNombre()<<endl;
+            for(int i=0; i<metro1.getNumLineas();i++){
+                cout<<i+1<<") "<<metro1.getLineas()[i].getNombre()<<endl;
             }
-                cout<<"Seleccione: "<<endl;
+            cout<<"Seleccione: "<<endl;
             cin>>eleccion2;                 //FALTA VALIDACION
-                eleccion2=eleccion2-1;
+            eleccion2=eleccion2-1;
 
-            Linea* lineaSel;
             lineaSel = metro1.getLineas()[eleccion2];
 
             cout<<"Quiere ingresar una estacion en: "<<endl;
@@ -61,10 +60,10 @@ int main()
 
             default:    //Opcion de posicion intermedia
 
-                cout<<"Numero de estaciones que tiene la linea: "<<lineaSel->getNumEstaciones()<<endl;
+                cout<<"Numero de estaciones que tiene la linea: "<<lineaSel.getNumEstaciones()<<endl;
                 cout<<"Despues de que estacion le gustaria crear la nueva estacion "<<endl;
-                for (int i=0;i<lineaSel->getNumEstaciones();i++){ //Le restamos uno para que no cuente el extremo mayor
-                    cout<<i+1<<") "<<lineaSel->getEstaciones()[i]->getNombre()<<endl;
+                for (int i=0;i<lineaSel.getNumEstaciones();i++){ //Le restamos uno para que no cuente el extremo mayor
+                    cout<<i+1<<") "<<lineaSel.getEstaciones()[i].getNombre()<<endl;
                 }
                 cout<<"Seleccione: ";
                 int eleccion4;
@@ -72,10 +71,10 @@ int main()
                 eleccion4=eleccion4-1;
 
 
-                Estacion* estacionAnterior;
-                estacionAnterior = lineaSel->getEstaciones()[eleccion4];
-                Estacion* estacionSiguiente;
-                estacionSiguiente = lineaSel->getEstaciones()[eleccion4+1];
+                Estacion estacionAnterior;
+                estacionAnterior = lineaSel.getEstaciones()[eleccion4];
+                Estacion estacionSiguiente;
+                estacionSiguiente = lineaSel.getEstaciones()[eleccion4+1];
 
 
 
@@ -86,32 +85,28 @@ int main()
 
                 //getline(cin,nombreNuevaEstacion);
 
-                Estacion* estacionNueva = new Estacion(nombreNuevaEstacion,estacionAnterior->getNumEstacion()+1,lineaSel->getNombre());
+                Estacion estacionNueva =  Estacion(nombreNuevaEstacion,lineaSel.getNombre());
 
 
-
-                lineaSel->setEstaciones(Utilidades::agregarEstacionArreglo(estacionNueva,lineaSel->getEstaciones(),lineaSel->getNumEstaciones()));  //Aqui hay un error
+                //CORREGIR LA LINEA DE ABAJO
+                lineaSel.setEstaciones(Utilidades::agregarEstacionArregloFinal(estacionNueva,lineaSel.getEstaciones(),lineaSel.getNumEstaciones()));  //Aqui hay un error
                 cout<<"Bandera"<<endl;
-                lineaSel->setNumEstaciones(lineaSel->getNumEstaciones()+1); //Agregamos el objeto al arreglo de estaciones
+                lineaSel.setNumEstaciones(lineaSel.getNumEstaciones()+1); //Agregamos el objeto al arreglo de estaciones
 
-                cout<<"Cuanto tiempo se demora de la estacion "<<estacionAnterior->getNombre()<<" hasta la estacion "<<nombreNuevaEstacion<<" : "<<endl;
+                cout<<"Cuanto tiempo se demora de la estacion "<<estacionAnterior.getNombre()<<" hasta la estacion "<<nombreNuevaEstacion<<" : "<<endl;
                 float tiempoAnterior;
                 cin>>tiempoAnterior;
-                estacionNueva->setTiempoAnterior(tiempoAnterior);
-                estacionAnterior->setTiempoSiguiente(tiempoAnterior);
+                estacionNueva.setTiempoAnterior(tiempoAnterior);
+                estacionAnterior.setTiempoSiguiente(tiempoAnterior);
 
-                cout<<"Cuanto tiempo se demora de la estacion "<<estacionSiguiente->getNombre()<<" hasta la estacion "<<nombreNuevaEstacion<<" : "<<endl;
+                cout<<"Cuanto tiempo se demora de la estacion "<<estacionSiguiente.getNombre()<<" hasta la estacion "<<nombreNuevaEstacion<<" : "<<endl;
                 float tiempoSiguiente;
                 cin>>tiempoSiguiente;
-                estacionNueva->setTiempoSiguiente(tiempoSiguiente);
-                estacionSiguiente->setTiempoAnterior(tiempoSiguiente);
+                estacionNueva.setTiempoSiguiente(tiempoSiguiente);
+                estacionSiguiente.setTiempoAnterior(tiempoSiguiente);
 
                 break;      //Ahora toca ajustar la posicion de esta posicion en adelate para cada estacion
             }
-
-
-
-
             break;
         case 2:
 

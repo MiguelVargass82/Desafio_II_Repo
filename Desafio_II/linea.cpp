@@ -20,10 +20,10 @@ string Linea::getNombre(){
 void Linea::setNombre(string nombre){
     this->nombre=nombre;
 }
-void Linea::setEstaciones(Estacion** estaciones) {
+void Linea::setEstaciones(Estacion* estaciones) {
     this->estaciones = estaciones;
 }
-Estacion** Linea::getEstaciones() {
+Estacion* Linea::getEstaciones() {
     return estaciones;
 }
 void Linea::setNumEstaciones(int num) {
