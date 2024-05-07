@@ -13,7 +13,6 @@ public:
    static Linea* agregarLineaArregloInicio(Linea linea, Linea* arreglo, int longitud);
 
 
-
    static Estacion* agregarEstacionArregloMedio(Estacion estacion, Estacion* arreglo, int indice, int longitud);
    static Linea* agregarLineaArregloMedio(Linea linea, Linea* arreglo, int indice, int longitud);
 

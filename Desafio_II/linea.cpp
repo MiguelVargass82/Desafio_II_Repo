@@ -46,6 +46,7 @@ void Linea::AgregarEstacion(Estacion estacion){
 
         float time = 30;    //Este tiempo despues lo vamos a volver variable
 
+
         estaciones[numEstaciones-1].setTiempoSiguiente(time);   //Modificamos directamente el objeto del arreglo no una copia
         estacion.setTiempoAnterior(time);
         this->setEstaciones(Utilidades::agregarEstacionArregloFinal(estacion,this->estaciones,this->getNumEstaciones()));
