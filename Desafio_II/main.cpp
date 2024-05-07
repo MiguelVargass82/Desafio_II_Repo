@@ -136,15 +136,37 @@ int main()
 
 
             break;//Fin Agregar estacion
-        case 2:
+        case 2://Eliminar Estacion
 
-            break;
-        case 3:
+            break;//Fin eliminar Estacion
 
-            break;
-        case 4:
+        case 3: //Consutar numero de lineas de la red
+            cout<<"--------------------------------------------------"<<endl;
+            cout<<"El numero de lineas de la red "<<metro1.getNombre()<<" es "<<metro1.getNumLineas()<<endl;
+            cout<<"-------------------------------------------------"<<endl;
 
-            break;
+            break;//fin consultar numero de lineas
+
+        case 4: //Consutar numero de estaciones en linea
+            if(metro1.getNumLineas()<1){
+                cout<<"-------------------------------------------------"<<endl;
+                cout<<"No hay lineas para visualizar"<<endl;
+                cout<<"-------------------------------------------------"<<endl;
+            }else{
+
+                cout<<"Seleccione la linea la cual quiere consultar el numero de estaciones: "<<endl;
+                for(int i =0; i<metro1.getNumLineas();i++){
+                    cout<<i+1<<") "<<metro1.getLineas()[i].getNombre()<<endl;
+                }
+                int eleccion4;
+                cin>>eleccion4;
+                eleccion4= eleccion4-1;
+                cout<<"-------------------------------------------------"<<endl;
+                cout<<"El numero de estaciones de la linea "<<metro1.getLineas()[eleccion4].getNombre()<<"  es "<<metro1.getLineas()[eleccion4].getNumEstaciones()<<endl;
+                cout<<"-------------------------------------------------"<<endl;
+
+            }
+            break;// Fin consultar numeros de estacione en linea
         case 5:
 
             break;
