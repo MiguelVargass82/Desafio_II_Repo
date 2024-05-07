@@ -42,11 +42,14 @@ int RedMetro::getNumLineas(){
 void RedMetro::AgregarLinea(Linea linea){
     this->setLineas(Utilidades::agregarLineaArregloFinal(linea,this->lineas,this->numLineas));
     this->numLineas=this->numLineas+1;
-
-
 }
+
+
 
 void RedMetro::EliminarLinea(){
 
-
+    cout<<"Se elimino la linea "<<this->lineas[0].getNombre()<<endl;
+    this->setLineas(new Linea[1]);
+    this->numLineas=0;
+    cout<<"-----------------------------------"<<endl;
 }

@@ -12,7 +12,6 @@ private:
     float tiempoSiguiente;
     float tiempoAnterior;
     string linea;
-    int numTransferencias;  //Numero de lineas alternas que tiene (nos sirve para tener control del arreglo dinamico)
 
 
 public: //Solo tiene metodos de encapsulamiento
@@ -21,11 +20,6 @@ public: //Solo tiene metodos de encapsulamiento
 
     Estacion();
     ~Estacion();
-    void setNumTransferencias(int num);
-    int getNumTransferencias();
-
-
-
 
     void setNombre(string nombre);
     string getNombre();

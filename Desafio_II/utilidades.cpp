@@ -40,6 +40,30 @@ using namespace std;
  }
 
 
+ //Esta funcion va a alargar el arreglo una posicion y luego le va a agregar el dato que necesitamos
+ Estacion* Utilidades::agregarEstacionArregloMedio(Estacion estacion, Estacion* arreglo,int indice, int longitud){
+     Estacion* nuevoArreglo = new Estacion[longitud+1];
+     bool menos=false; //Boleano para restarle uno a las posiciones al saltarlos una posicion
+     for(int i=0; i<longitud;i++){
+         if(i!=indice){
+             nuevoArreglo[i]=arreglo[i];
+             if(menos){
+
+                 nuevoArreglo[i]=arreglo[i-1];
+             }
+         }
+         else{
+             menos = true;
+         }
+     }
+     nuevoArreglo[longitud]=arreglo[longitud-1];
+     nuevoArreglo[indice]=estacion;
+     return nuevoArreglo;
+ }
+
+
+ //METODOS PARA LINEAS
+
 Linea* Utilidades::agregarLineaArregloFinal(Linea linea, Linea* arreglo, int longitud){   //Esta funcion va a alargar el arreglo una posicion y luego le va a agregar el dato que necesitamos
     Linea* nuevoArreglo = new Linea[longitud+1];
     cout<<"longitud: "<<longitud<<endl;
@@ -78,34 +102,40 @@ Linea* Utilidades::agregarLineaArregloInicio(Linea linea, Linea* arreglo, int lo
 
 
 
-//Con estas funciones puedo agregar un dato a los arreglos y este puede quedar en una posicion especifica
 
 
-
-
-
- //Esta funcion va a alargar el arreglo una posicion y luego le va a agregar el dato que necesitamos
-Estacion* Utilidades::agregarEstacionArregloMedio(Estacion estacion, Estacion* arreglo,int indice, int longitud){
-    Estacion* nuevoArreglo = new Estacion[longitud+1];
-    bool menos=false; //Boleano para restarle uno a las posiciones al saltarlos una posicion
-    for(int i=0; i<longitud;i++){
-        if(i!=indice){
-            nuevoArreglo[i]=arreglo[i];
-            if(menos){
-
-                nuevoArreglo[i]=arreglo[i-1];
+static Estacion* EliminarEstacion(Estacion estacion, Estacion* arreglo, int longitud){
+    Estacion* nuevoArreglo = new Estacion[longitud-1];
+    bool eliminado=false;
+    for(int i =0;i<longitud;i++){
+        if(arreglo[i].getNombre()==estacion.getNombre()){
+            eliminado=true;
+        }else{
+            if(eliminado){  //Y nos saltamos esa posicion
+                nuevoArreglo[i-1]=arreglo[i];
+            }else{  //No hemos saltado la posicion
+                nuevoArreglo[i]=arreglo[i];
             }
         }
-        else{
-            menos = true;
-        }
     }
-    nuevoArreglo[longitud]=arreglo[longitud-1];
-    nuevoArreglo[indice]=estacion;
     return nuevoArreglo;
 }
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+//Funcion inutil
 Linea* Utilidades::agregarLineaArregloMedio(Linea linea, Linea* arreglo,int indice, int longitud){
     Linea* nuevoArreglo = new Linea[longitud+1];
     bool menos=false;   //Boleano para restarle uno a las posiciones al saltarlos una posicion
@@ -122,6 +152,24 @@ Linea* Utilidades::agregarLineaArregloMedio(Linea linea, Linea* arreglo,int indi
     }
     nuevoArreglo[indice]=linea;
     delete[] arreglo;
+    return nuevoArreglo;
+}
+
+
+Linea* EliminarLinea(Linea linea, Linea* arreglo, int longitud){
+    Linea* nuevoArreglo = new Linea[longitud-1];
+    bool eliminado=false;
+    for(int i =0;i<longitud;i++){
+        if(arreglo[i].getNombre()==linea.getNombre()){
+            eliminado=true;
+        }else{
+            if(eliminado){  //Y nos saltamos esa posicion
+                nuevoArreglo[i-1]=arreglo[i];
+            }else{  //No hemos saltado la posicion
+                nuevoArreglo[i]=arreglo[i];
+            }
+        }
+    }
     return nuevoArreglo;
 }
 

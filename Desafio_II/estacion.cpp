@@ -15,9 +15,6 @@ Estacion::~Estacion(){
 
 }
 
-void Estacion::setNumTransferencias(int num) {
-    this->numTransferencias = num;
-}
 
 void Estacion::setNombre(string nombre) {
     this->nombre = nombre;

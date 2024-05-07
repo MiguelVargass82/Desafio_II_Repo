@@ -5,8 +5,13 @@
 using namespace std;
 
 //Encapsulamiento
-Linea::Linea() {
+Linea::Linea() {    //Ojo con eso
+    this->nombre = "";
+    this->numEstaciones=NULL;
+    this->estaciones= NULL;
 }
+
+
 Linea::Linea(int num) {   //Constructor que se invocara cuando se crea una nueva linea
     string nombre;
     cout<<"Ingrese el nombre de la nueva linea:"<<endl;
