@@ -25,8 +25,11 @@ public:
 
 
     //Metodos
-    void AgregarEstacion();
+    void AgregarEstacion(Estacion estacion);
+    void AgregarEstacionAtras(Estacion estacion);
+    void AgregarEstacionPosicion(Estacion estacion, int indice);
     void EliminarEstacion();
+    void mostrarEstaciones();
 };
 
 #endif // LINEA_H

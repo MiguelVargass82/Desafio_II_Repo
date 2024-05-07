@@ -14,7 +14,7 @@ private:
     int numLineas;  //Numero de lineas (ayuda al control del arreglo)
 public:
 
-    RedMetro(int num);
+    RedMetro(string nombre) ;
     void setNombre(string nombre);
    string getNombre() ;
     void setLineas(Linea* lineas);
