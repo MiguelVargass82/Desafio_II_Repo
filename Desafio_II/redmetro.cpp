@@ -4,26 +4,10 @@
 #include <string>
 using namespace std;
 
-
-// Constructor
-    RedMetro::RedMetro(int num) {       //Este constructor especial se invoca cuando se crea la primera y unica isntancia de la red
-    string nombre;
-    cout<<"Ingrese el nombre de la nueva red de metro: "<<endl;
-     getline(cin, nombre);
-    this->nombre = nombre;
-    this->lineas= new Linea[1];
-    lineas[0] =  Linea(1);
-    Linea lineaAux = lineas[0];
-    lineaAux.setEstaciones(new Estacion[0]);
-    cout<<"Ingrese el nombre de la estacion que iniciara la linea "<<lineaAux.getNombre()<<":"<<endl;
-    string nomEstacion;
-
-
-    cin>> nomEstacion;
-
-    lineaAux.getEstaciones()[0]= Estacion(nomEstacion,lineaAux.getNombre());
-    cout<<"hola";
-    this->numLineas=1;
+    RedMetro::RedMetro(string nombre) {
+    this->nombre=nombre;
+    this->lineas = new Linea[1];
+    this->numLineas=0;
 }
 
 // Métodos de encapsulamiento para el atributo 'nombre'
@@ -77,16 +61,9 @@ void RedMetro::AgregarLinea(){
 
 
 
-
-
-
         string nomPrimeraLinea;
         cout<<"Ingrese el nombre de la linea que quiere crear"<<endl;
         getline(std::cin, nomPrimeraLinea);
-
-
-
-
 
 }
 
