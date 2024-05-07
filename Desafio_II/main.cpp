@@ -9,6 +9,9 @@ int main()
 {
     //Variables predefinidas
  string nombreEstacion;
+    Linea lineaSel;
+ Estacion estacionSel;
+    Linea nuevaLinea;
  //Fin variables predefinidas
 
 
@@ -148,9 +151,51 @@ int main()
         case 5:
 
             break;
-        case 6:
+        case 6: //Agregar linea
+            cout<<endl<<"----------------------------------"<<endl;
+            cout<<"Ingrese la linea de la estacion de la cual va a partir la nueva linea: "<<endl;
+            for(int i=0; i<metro1.getNumLineas();i++){
+                cout<<i+1<<") "<<metro1.getLineas()[i].getNombre()<<endl;
+            }
+            int eleccion4;
 
-            break;
+
+            cin>>eleccion4;
+            eleccion4=eleccion4-1;  //Falta validacion-------
+
+
+
+            lineaSel = metro1.getLineas()[eleccion4];
+            cout<<"Linea seleccionada: "<<lineaSel.getNombre()<<endl;
+
+            if(lineaSel.getNumEstaciones()<1){
+                cout<<endl<<"----------------------------------"<<endl;
+                cout<<"Para agregar una linea tiene que existir almenos una estacion de la linea de la cual vamos a partir "<<endl;
+                cout<<endl<<"----------------------------------"<<endl;
+
+
+            }else{
+                cout<<"Seleccione la estacion de la cual va a partir la linea: "<<endl;
+                for(int i=0;i<lineaSel.getNumEstaciones();i++){
+                    cout<<i+1<<")"<<lineaSel.getEstaciones()[i].getNombre()<<endl;
+                }
+
+
+                int eleccion5;
+                cin>>eleccion5; //Falta validacion
+                eleccion5= eleccion5-1;
+
+                lineaSel.getEstaciones()[eleccion5].setTransferencia(true);
+                estacionSel = lineaSel.getEstaciones()[eleccion5];
+                metro1.AgregarLinea(Linea(1));
+                //En la siguiente linea estamos creando la primera estacion de la linea en la cual tambien vamos a asignarle su nombre que tiene que ir contactenado con la...
+                //..estacion de la que partimos
+                metro1.getLineas()[metro1.getNumLineas()-1].AgregarEstacion(Estacion( estacionSel.getNombre()+metro1.getLineas()[metro1.getNumLineas()-1].getNombre(),metro1.getLineas()[metro1.getNumLineas()-1].getNombre()));
+
+            }
+
+
+            break;//Fin de agregar linea
         case 7:
 
             break;

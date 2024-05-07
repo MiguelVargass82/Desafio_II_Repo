@@ -27,12 +27,12 @@ string Estacion::getNombre() {
     return nombre;
 }
 
-void Estacion::setLineasTransferencia(Estacion* lineasTransferencia) {
-    this->lineasTransferencia = lineasTransferencia;
+void Estacion::setTransferencia(bool tranferencias) {
+    this->Transferencia = tranferencias;
 }
 
-Estacion* Estacion::getLineasTransferencia() {  //Es un arreglo
-    return lineasTransferencia;
+bool Estacion::getTransferencia() {  //Es un arreglo
+    return Transferencia;
 }
 
 void Estacion::setTiempoSiguiente(float tiempoSiguiente) {

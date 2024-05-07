@@ -8,7 +8,7 @@ class Estacion
 {
 private:
     string nombre;
-    Estacion* lineasTransferencia;  //Arreglo que contendra sus estaciones variante de transferencia de transferencia que tiene la estacion
+    bool Transferencia;  //Arreglo que contendra sus estaciones variante de transferencia de transferencia que tiene la estacion
     float tiempoSiguiente;
     float tiempoAnterior;
     string linea;
@@ -30,8 +30,8 @@ public: //Solo tiene metodos de encapsulamiento
     void setNombre(string nombre);
     string getNombre();
 
-    void setLineasTransferencia(Estacion* lineasTransferencia);
-    Estacion* getLineasTransferencia();
+    void setTransferencia(bool transferencia);
+    bool getTransferencia();
 
     void setTiempoSiguiente(float tiempoSiguiente);
     float getTiempoSiguiente();

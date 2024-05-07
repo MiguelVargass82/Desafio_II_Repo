@@ -24,7 +24,7 @@ public:
 
 
     //Metodos
-    void AgregarLinea();
+    void AgregarLinea(Linea linea);
     void EliminarLinea();
 };
 

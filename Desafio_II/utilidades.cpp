@@ -40,23 +40,13 @@ using namespace std;
  }
 
 
-
-
-
-
-
-
 Linea* Utilidades::agregarLineaArregloFinal(Linea linea, Linea* arreglo, int longitud){   //Esta funcion va a alargar el arreglo una posicion y luego le va a agregar el dato que necesitamos
     Linea* nuevoArreglo = new Linea[longitud+1];
-    for(int i=0; i<=longitud;i++){
-        if(i<longitud){
-            nuevoArreglo[i]=arreglo[i];
-        }
-        else{
-            nuevoArreglo[i]=linea;
-        }
+    cout<<"longitud: "<<longitud<<endl;
+    for(int i=0; i<longitud;i++){
+            nuevoArreglo[i]=arreglo[i];          
     }
-    delete[] arreglo;
+    nuevoArreglo[longitud]=linea;
     return nuevoArreglo;
 }
 
