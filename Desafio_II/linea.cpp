@@ -131,3 +131,20 @@ void Linea::EliminarEstacion(Estacion estacion){
 
 }
 
+void Linea::EstacionPertenece(Estacion estacion){
+    bool pertenece=false;
+    for(int i = 0; i<numEstaciones;i++){
+        if(estacion.getNombre()==this->estaciones[i].getNombre()){
+            pertenece=true;
+        }
+
+        if(pertenece){
+            cout<<"La estacion "<<estacion.getNombre()<<" pertenece a  "<<this->nombre;
+        }else{
+            cout<<"La estacion "<<estacion.getNombre()<<" NO pertenece a  "<<this->nombre;
+        }
+    }
+
+
+
+}
