@@ -104,7 +104,7 @@ Linea* Utilidades::agregarLineaArregloInicio(Linea linea, Linea* arreglo, int lo
 
 
 
-static Estacion* EliminarEstacion(Estacion estacion, Estacion* arreglo, int longitud){
+Estacion* Utilidades::EliminarEstacion(Estacion estacion, Estacion* arreglo, int longitud){
     Estacion* nuevoArreglo = new Estacion[longitud-1];
     bool eliminado=false;
     for(int i =0;i<longitud;i++){

@@ -28,7 +28,7 @@ public:
     void AgregarEstacion(Estacion estacion);
     void AgregarEstacionAtras(Estacion estacion);
     void AgregarEstacionPosicion(Estacion estacion, int indice);
-    void EliminarEstacion();
+    void EliminarEstacion(Estacion estacion);
     void mostrarEstaciones();
 };
 

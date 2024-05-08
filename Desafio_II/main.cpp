@@ -137,6 +137,28 @@ int main()
 
             break;//Fin Agregar estacion
         case 2://Eliminar Estacion
+            cout<<"Seleccine la linea de la estacion que desea eliminar: "<<endl;
+            for(int i=0;i<metro1.getNumLineas();i++){
+                cout<<i+1<<") "<<metro1.getLineas()[i].getNombre()<<endl;
+            }
+            cout<<"Seleccione: "<<endl;
+            int eleccion4;
+            cin>>eleccion4;
+
+            eleccion4=eleccion4-1;
+            lineaSel=metro1.getLineas()[eleccion4];
+            cout<<"Seleccione la estacion que desea eliminar: "<<endl;
+            for(int i =0 ; i<lineaSel.getNumEstaciones();i++){
+                cout<<i+1<<")"<<lineaSel.getEstaciones()[i].getNombre()<<endl;
+            }
+            cout<<"Seleccione: "<<endl;
+            int eleccion5;
+            cin>>eleccion5;
+            eleccion5=eleccion5-1;
+            lineaSel.EliminarEstacion(lineaSel.getEstaciones()[eleccion5]);
+            metro1.getLineas()[eleccion4]=lineaSel;
+
+
 
             break;//Fin eliminar Estacion
 

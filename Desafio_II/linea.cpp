@@ -117,9 +117,17 @@ void Linea::mostrarEstaciones(){
     cout<<endl;
 }   //Fin mostrarEstaciones
 
-void Linea::EliminarEstacion(){
+void Linea::EliminarEstacion(Estacion estacion){
+    if(estacion.getTransferencia()==false)
+    {
+        cout<<"---------------------------------------------------"<<endl;
+        cout<<"La estacion "<<estacion.getNombre()<<"es una estacion de transferencia, no puedes eliminar una estacion de transferencia "<<endl;
+    }else{
+        this->setEstaciones(Utilidades::EliminarEstacion(estacion,this->estaciones,this->numEstaciones));
+        this->numEstaciones=this->numEstaciones-1;
+        cout<<"Estacion "<<estacion.getNombre()<<" eliminada con exito "<<endl;
 
-
+    }
 
 }
 
