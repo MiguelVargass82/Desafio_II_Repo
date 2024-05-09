@@ -5,6 +5,7 @@
 
 
 using namespace std;
+int solicitarNumeroEntero(int min, int max);
 
 void mostrar(RedMetro metro1);
 int main()
@@ -40,6 +41,7 @@ int main()
         cout<<"7) Eliminar una linea de la red  "<<endl;
         cout<<"8) Consultar cuantas estaciones tiene la red  "<<endl;
         cout<<"9) Consultar tiempo de una estacion a otra de la misma linea "<<endl;
+        cout<<"Cualquer otro numero) Salir "<<endl;
         cout<<"Seleccione: "<<endl;
 
         int eleccion1;  //FALTA VALIDACION
@@ -61,8 +63,7 @@ int main()
                 for(int i=0; i<metro1.getNumLineas();i++){
                     cout<<i+1<<") "<<metro1.getLineas()[i].getNombre()<<endl;
                 }
-                cout<<"Seleccione: "<<endl;
-                cin>>eleccion2;                 //FALTA VALIDACION
+                eleccion2 = solicitarNumeroEntero(1,metro1.getNumLineas());                //FALTA VALIDACION
                 eleccion2=eleccion2-1;
                 lineaSel = metro1.getLineas()[eleccion2];
                 cout<<"Quiere ingresar una estacion en: "<<endl;
@@ -73,7 +74,7 @@ int main()
 
 
                 int eleccion3;
-                cin>>eleccion3; //FALTA VALIDACION
+                eleccion3= solicitarNumeroEntero(1,3);
 
                  acum=0;    //Solo creamos un arreglo con todos los nombres de las estaciones
                 for(int i=0;i<metro1.getNumLineas();i++){
@@ -158,9 +159,8 @@ int main()
                         for (int i=0;i<lineaSel.getNumEstaciones();i++){ //Le restamos uno para que no cuente el extremo mayor
                             cout<<i+1<<") "<<lineaSel.getEstaciones()[i].getNombre()<<endl;
                         }
-                        cout<<"Seleccione: ";
                         int eleccion4;
-                        cin>>eleccion4;     //FALTA VALIDACION
+                        eleccion4= solicitarNumeroEntero(1,metro1.getNumLineas());     //FALTA VALIDACION
 
 
 
@@ -195,9 +195,8 @@ int main()
             for(int i=0;i<metro1.getNumLineas();i++){
                 cout<<i+1<<") "<<metro1.getLineas()[i].getNombre()<<endl;
             }
-            cout<<"Seleccione: "<<endl;
             int eleccion4;
-            cin>>eleccion4;
+            eleccion4 =solicitarNumeroEntero(1,metro1.getNumLineas());
 
             eleccion4=eleccion4-1;
             lineaSel=metro1.getLineas()[eleccion4];
@@ -205,10 +204,10 @@ int main()
             for(int i =0 ; i<lineaSel.getNumEstaciones();i++){
                 cout<<i+1<<")"<<lineaSel.getEstaciones()[i].getNombre()<<endl;
             }
-            cout<<"Seleccione: "<<endl;
+
             int eleccion5;
-            cin>>eleccion5;
-            eleccion5=eleccion5-1;
+            eleccion5=solicitarNumeroEntero(1,lineaSel.getNumEstaciones());
+            eleccion5=eleccion5-1;    
             lineaSel.EliminarEstacion(lineaSel.getEstaciones()[eleccion5]);
             metro1.getLineas()[eleccion4]=lineaSel;
 
@@ -235,7 +234,7 @@ int main()
                     cout<<i+1<<") "<<metro1.getLineas()[i].getNombre()<<endl;
                 }
                 int eleccion4;
-                cin>>eleccion4;
+                eleccion4=solicitarNumeroEntero(1,metro1.getNumLineas());
                 eleccion4= eleccion4-1;
                 cout<<"-------------------------------------------------"<<endl;
                 cout<<"El numero de estaciones de la linea "<<metro1.getLineas()[eleccion4].getNombre()<<"  es "<<metro1.getLineas()[eleccion4].getNumEstaciones()<<endl;
@@ -269,11 +268,10 @@ int main()
 
 
             int eleccion6;
-            cin>>eleccion6;     //Falta validacion
+            eleccion6=solicitarNumeroEntero(1,acum);     //Falta validacion
             eleccion6=eleccion6-1;
 
 
-            cout<<"Seleccione: "<<endl;
 
             nombreEstacion=estacionesTotales[eleccion6];
 
@@ -282,8 +280,8 @@ int main()
                 cout<<i+1<<")"<<metro1.getLineas()[i].getNombre()<<endl;
             }
             int eleccion7;
-            cout<<"Seleccione: ";
-             cin>>eleccion7;
+
+             eleccion7=solicitarNumeroEntero(1,metro1.getNumLineas());
             eleccion7=eleccion7-1;
             lineaSel=metro1.getLineas()[eleccion7];
              lineaSel.EstacionPertenece(nombreEstacion);
@@ -305,8 +303,8 @@ int main()
                 }
                 int eleccion4;
 
-                cout<<"Seleccione: ";
-                cin>>eleccion4;
+
+                eleccion4=solicitarNumeroEntero(1,metro1.getNumLineas());
                 eleccion4=eleccion4-1;  //Falta validacion-------
 
 
@@ -327,7 +325,7 @@ int main()
                     }
                     cout<<"Seleccione: ";
                     int eleccion5;
-                    cin>>eleccion5; //Falta validacion
+                    eleccion5=solicitarNumeroEntero(1,lineaSel.getNumEstaciones()); //Falta validacion
                     eleccion5= eleccion5-1;
 
                     lineaSel.getEstaciones()[eleccion5].setTransferencia(true);
@@ -384,8 +382,8 @@ int main()
             for(int i=0; i<metro1.getNumLineas();i++){
                 cout<<i+1<<") "<<metro1.getLineas()[i].getNombre()<<endl;
             }
-            cout<<"Seleccione: "<<endl;
-            cin>>eleccion2;                 //FALTA VALIDACION
+
+            eleccion2=solicitarNumeroEntero(1,metro1.getNumLineas());                 //FALTA VALIDACION
             eleccion2=eleccion2-1;
             lineaSel = metro1.getLineas()[eleccion2];
 
@@ -395,16 +393,16 @@ int main()
             for (int i=0;i<lineaSel.getNumEstaciones();i++){ //Le restamos uno para que no cuente el extremo mayor
                 cout<<i+1<<") "<<lineaSel.getEstaciones()[i].getNombre()<<endl;
             }
-            cout<<"Seleccione: "<<endl;
+
 
 
             int eleccion10;
-            cin>>eleccion10;     //FALTA VALIDACION
+            eleccion10=solicitarNumeroEntero(1,lineaSel.getNumEstaciones());     //FALTA VALIDACION
             eleccion10=eleccion10-1;
-            cout<<"Seleccione la segunda estacion: "<<endl;
+            cout<<"Seleccione la segunda estacion "<<endl;
 
             int eleccion11;
-            cin>>eleccion11;     //FALTA VALIDACION
+            eleccion11=solicitarNumeroEntero(1,lineaSel.getNumEstaciones());     //FALTA VALIDACION
             eleccion11=eleccion11-1;
             if(eleccion10 == eleccion11){
                 cout<<"---------------------------------------------------------"<<endl;
@@ -416,11 +414,7 @@ int main()
                 if(eleccion10<eleccion11){
 
                     for(int i=eleccion10;i<eleccion11;i++){
-                        cout<<"Acum es: "<<acum<<endl;
-                        cout<<"El tiempo siguiente de la estacio "<<lineaSel.getEstaciones()[i].getNombre()<<" es "<<lineaSel.getEstaciones()[i].getTiempoSiguiente()<<endl;
                         acum=lineaSel.getEstaciones()[i].getTiempoSiguiente()+acum;
-                        cout<<"Acum es: "<<acum<<endl;
-
                     }
                 }else{
 
@@ -441,24 +435,42 @@ int main()
 
         default:
             cout<<"---------------------------------------------"<<endl;
-            cout<<"Selecciona porfavor una opcion valida "<<endl;
+            cout<<"Saliendo del programa... "<<endl;
+            salir=true;
             cout<<"---------------------------------------------"<<endl;
             break;
         }
 
         //Para tener mas control de lo que esta pasando
         mostrar(metro1);
+        cout<<"----------------------------------------------------"<<endl;
 
     }
-    cout<<"Seleccione la primera estacion "<<endl;
-
-
-
-
-
 
 
     return 0;
+}
+int solicitarNumeroEntero(int min, int max) {
+    int numero;
+
+    // Bucle hasta que el usuario ingrese un número válido
+    while (true) {
+        std::cout << "Ingrese un numero entero entre " << min << " y " << max << ": ";
+
+        // Solicitar entrada del usuario
+        std::cin >> numero;
+
+        // Verificar si la entrada es válida
+        if (std::cin.fail() || numero < min || numero > max) {
+
+            std::cout << "Error: Ingrese un numero entero valido dentro del rango especificado." << std::endl;
+        } else {
+            // Salir del bucle si la entrada es válida
+            break;
+        }
+    }
+
+    return numero;
 }
 
 void mostrar(RedMetro metro1){
@@ -471,7 +483,6 @@ void mostrar(RedMetro metro1){
                 cout<<"_";
             }
         }
-        metro1.getLineas()[i];
     }
     cout<<endl;
 }
