@@ -279,6 +279,7 @@ int main()
                     //En la siguiente linea estamos creando la primera estacion de la linea en la cual tambien vamos a asignarle su nombre que tiene que ir contactenado con la...
                     //..estacion de la que partimos
                     metro1.getLineas()[metro1.getNumLineas()-1].AgregarEstacion(Estacion( estacionSel.getNombre()+metro1.getLineas()[metro1.getNumLineas()-1].getNombre(),metro1.getLineas()[metro1.getNumLineas()-1].getNombre()));
+                    metro1.getLineas()[metro1.getNumLineas()-1].getEstaciones()[0].setTransferencia(true);
                 }
             }
             break;//Fin de agregar linea
@@ -367,13 +368,13 @@ int main()
                 }else{
 
                     for(int i=eleccion11;i<eleccion10;i++){
-                        cout<<"Acum es: "<<acum<<endl;
-                        cout<<"El tiempo siguiente de la estacio "<<lineaSel.getEstaciones()[i].getNombre()<<" es "<<lineaSel.getEstaciones()[i].getTiempoSiguiente()<<endl;
                         acum=lineaSel.getEstaciones()[i].getTiempoSiguiente()+acum;
-                        cout<<"Acum es: "<<acum<<endl;
                     }
                 }
+                cout<<"---------------------------------------------"<<endl;
                 cout<<"El tiempo que se tarda de la estacion "<<lineaSel.getEstaciones()[eleccion10].getNombre()<<" hasta la estacion "<<lineaSel.getEstaciones()[eleccion11].getNombre()<<" es "<<acum<<endl;
+                cout<<"---------------------------------------------"<<endl;
+
             }
 
 
