@@ -2,9 +2,11 @@
 #include "redmetro.h"
 #include"utilidades.h"
 #include <string>
+
+
 using namespace std;
 
-
+void mostrar(RedMetro metro1);
 int main()
 {
     //Variables predefinidas
@@ -12,6 +14,9 @@ int main()
     Linea lineaSel;
  Estacion estacionSel;
     Linea nuevaLinea;
+ int acum;
+    string* estacionesTotales;
+ int cont;
  //Fin variables predefinidas
 
 
@@ -76,12 +81,9 @@ int main()
                     cout<<"Ingrese el nombre de la nueva estacion: "<<endl;
                     cin>>nombreEstacion;
                     lineaSel.AgregarEstacion(Estacion(nombreEstacion,lineaSel.getNombre()));
-                    metro1.getLineas()[0]=lineaSel;
+                    metro1.getLineas()[eleccion2]=lineaSel;
 
                     cout<<"Numero de estaciones de la linea "<<lineaSel.getNombre()<<" "<<lineaSel.getNumEstaciones()<<endl;
-                    cout<<"Numero de estaciones segun el arreglo de la red, de la linea "<<metro1.getLineas()[0].getNombre()<<": "<<metro1.getLineas()[0].getNumEstaciones()<<endl;
-                    cout<<"No hubo errores"<<endl;
-
                     lineaSel.mostrarEstaciones();
 
                     for(int i=0; i<lineaSel.getNumEstaciones();i++){
@@ -95,7 +97,7 @@ int main()
                     cout<<"Ingrese el nombre de la nueva estacion: "<<endl;
                     cin>>nombreEstacion;
                     lineaSel.AgregarEstacionAtras(Estacion(nombreEstacion,lineaSel.getNombre()));
-                    metro1.getLineas()[0]=lineaSel;
+                    metro1.getLineas()[eleccion2]=lineaSel;
 
                     cout<<"Numero de estaciones de la linea "<<lineaSel.getNombre()<<" "<<lineaSel.getNumEstaciones()<<endl;
                     cout<<"Numero de estaciones segun el arreglo de la red, de la linea "<<metro1.getLineas()[0].getNombre()<<": "<<metro1.getLineas()[0].getNumEstaciones()<<endl;
@@ -127,7 +129,7 @@ int main()
                         cin>>nombreEstacion;
 
                         lineaSel.AgregarEstacionPosicion(Estacion(nombreEstacion, lineaSel.getNombre()),eleccion4);
-                        metro1.getLineas()[0]=lineaSel;
+                        metro1.getLineas()[eleccion2]=lineaSel;
                     }
                 }
 
@@ -189,13 +191,57 @@ int main()
 
             }
             break;// Fin consultar numeros de estacione en linea
-        case 5:
 
-            break;
+        case 5: //Consultar si una estacion pertenece a una linea
+
+
+            acum=0;
+            for(int i=0;i<metro1.getNumLineas();i++){
+                acum=acum+metro1.getLineas()[i].getNumEstaciones();
+            }
+            estacionesTotales = new string[acum];   //Creamos un arreglo donde vamos a almacenar las estaciones
+            cont=0;
+            for(int i=0;i<metro1.getNumLineas();i++){
+                for(int j=0; j< metro1.getLineas()[i].getNumEstaciones(); j++){
+                    estacionesTotales[cont] = metro1.getLineas()[i].getEstaciones()[j].getNombre();
+                    cont++;
+                }
+            }
+
+            cout<<endl;
+            cout<<"Cual estacion desea consultar: "<<endl;
+
+            for(int i=0;i<acum;i++){
+                cout<<i+1<<") "<<estacionesTotales[i]<<endl;
+            }
+
+
+            int eleccion6;
+            cin>>eleccion6;     //Falta validacion
+            eleccion6=eleccion6-1;
+
+
+            cout<<"Seleccione: "<<endl;
+
+            nombreEstacion=estacionesTotales[eleccion6];
+
+            cout<<"A que linea le gustaria consultar a la que pertence: "<<endl;
+            for(int i=0;i<metro1.getNumLineas();i++){
+                cout<<i+1<<")"<<metro1.getLineas()[i].getNombre()<<endl;
+            }
+            int eleccion7;
+            cout<<"Seleccione: ";
+             cin>>eleccion7;
+            eleccion7=eleccion7-1;
+            lineaSel=metro1.getLineas()[eleccion7];
+             lineaSel.EstacionPertenece(nombreEstacion);
+
+            break;//Fin consutar si una estacion pertenece a una linea
+
         case 6: //Agregar linea
 
-            if(metro1.getNumLineas()<1){    //En dado caso que hallamos eliminado la primera y unica linea
 
+            if(metro1.getNumLineas()<1){    //En dado caso que hallamos eliminado la primera y unica linea
                 metro1.getLineas()[0]= Linea(1);
                 metro1.setNumLineas(1);
 
@@ -207,7 +253,7 @@ int main()
                 }
                 int eleccion4;
 
-
+                cout<<"Seleccione: ";
                 cin>>eleccion4;
                 eleccion4=eleccion4-1;  //Falta validacion-------
 
@@ -227,6 +273,7 @@ int main()
                     for(int i=0;i<lineaSel.getNumEstaciones();i++){
                         cout<<i+1<<")"<<lineaSel.getEstaciones()[i].getNombre()<<endl;
                     }
+                    cout<<"Seleccione: ";
                     int eleccion5;
                     cin>>eleccion5; //Falta validacion
                     eleccion5= eleccion5-1;
@@ -257,15 +304,33 @@ int main()
 
             break;//Fin eliminar linea de la red
 
+
+        case 8: //Consultar cuantas estaciones tiene la red
+            cout<<"-----------------------------------------------------------"<<endl;
+            if(metro1.getNumLineas()==1){
+                cout<<"La red tiene "<<metro1.getLineas()->getNumEstaciones()<<" estaciones "<<endl;
+            }else{
+
+                acum=0;
+                for(int i=0;i<metro1.getNumLineas();i++){
+                    acum=acum+metro1.getLineas()[i].getNumEstaciones();
+                }
+
+                cout<<"La red tiene "<<acum-metro1.getNumLineas()+1<<" estaciones "<<endl;
+                cout<<"-----------------------------------------------------------"<<endl;
+
+            }
+
+
+            break;
+
+
         default:        //Caso 8
             break;
         }
 
-
-
-
-
-
+        //Para tener mas control de lo que esta pasando
+        mostrar(metro1);
 
     }
 
@@ -275,7 +340,20 @@ int main()
 
 
 
-
-
     return 0;
+}
+
+void mostrar(RedMetro metro1){
+    for(int i=0;i<metro1.getNumLineas();i++){
+        cout<<endl<<metro1.getLineas()[i].getNombre()<<"=>";
+        for(int j=0;j< metro1.getLineas()[i].getNumEstaciones();j++){
+
+            cout<<metro1.getLineas()[i].getEstaciones()[j].getNombre();
+            if(j!=metro1.getLineas()[i].getNumEstaciones()-1){
+                cout<<"_";
+            }
+        }
+        metro1.getLineas()[i];
+    }
+    cout<<endl;
 }

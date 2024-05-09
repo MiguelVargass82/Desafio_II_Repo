@@ -30,6 +30,7 @@ public:
     void AgregarEstacionPosicion(Estacion estacion, int indice);
     void EliminarEstacion(Estacion estacion);
     void mostrarEstaciones();
-};
+    void EstacionPertenece(string nombreEstacion);
+        };
 
 #endif // LINEA_H
