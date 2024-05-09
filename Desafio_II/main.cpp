@@ -17,6 +17,7 @@ int main()
  int acum;
     string* estacionesTotales;
  int cont;
+    bool existe;
  //Fin variables predefinidas
 
 
@@ -74,23 +75,64 @@ int main()
                 int eleccion3;
                 cin>>eleccion3; //FALTA VALIDACION
 
-
+                 acum=0;    //Solo creamos un arreglo con todos los nombres de las estaciones
+                for(int i=0;i<metro1.getNumLineas();i++){
+                    acum=acum+metro1.getLineas()[i].getNumEstaciones();
+                }
+                estacionesTotales = new string[acum];   //Creamos un arreglo donde vamos a almacenar las estaciones
+                cont=0;
+                for(int i=0;i<metro1.getNumLineas();i++){
+                    for(int j=0; j< metro1.getLineas()[i].getNumEstaciones(); j++){
+                        estacionesTotales[cont] = metro1.getLineas()[i].getEstaciones()[j].getNombre();
+                        cont++;
+                    }
+                }
 
                 switch (eleccion3) {
                 case 1://Agregar estacion en extremo arriba(final)
 
-                    cout<<"Ingrese el nombre de la nueva estacion: "<<endl;
-                    cin>>nombreEstacion;
-                    lineaSel.AgregarEstacion(Estacion(nombreEstacion,lineaSel.getNombre()));
-                    metro1.getLineas()[eleccion2]=lineaSel;
+                    existe=true;   //El siguiente ciclo se asegura que ingrese una estacion que no exista
+                    while(existe){
+                         cout<<"Ingrese el nombre de la nueva estacion: "<<endl;
+                        cin>>nombreEstacion;
+                        existe =false;
+                        for(int i=0;i<acum;i++){
+                            if(estacionesTotales[i]==nombreEstacion){
+                                existe = true;
+                            }
+                        }
+                        if(existe){
+                        cout<<"La estacion que esta intentando crear ya existe, porfavor ingrese otra: "<<endl;
+                            }
+                    }
 
+
+                        lineaSel.AgregarEstacion(Estacion(nombreEstacion,lineaSel.getNombre()));
+                        metro1.getLineas()[eleccion2]=lineaSel;
 
                     break;  //Fin de agregar estacion el entremo arriba
 
 
                 case 2: //Agregar estacion extremo abajo
-                    cout<<"Ingrese el nombre de la nueva estacion: "<<endl;
-                    cin>>nombreEstacion;
+
+
+
+                    existe=true;   //El siguiente ciclo se asegura que ingrese una estacion que no exista
+                    while(existe){
+                        cout<<"Ingrese el nombre de la nueva estacion: "<<endl;
+                        cin>>nombreEstacion;
+                        existe =false;
+                        for(int i=0;i<acum;i++){
+                            if(estacionesTotales[i]==nombreEstacion){
+                                existe = true;
+                            }
+                        }
+                        if(existe){
+                            cout<<"La estacion que esta intentando crear ya existe, porfavor ingrese otra: "<<endl;
+                        }
+                    }
+
+
                     lineaSel.AgregarEstacionAtras(Estacion(nombreEstacion,lineaSel.getNombre()));
                     metro1.getLineas()[eleccion2]=lineaSel;
 
@@ -120,11 +162,26 @@ int main()
                         int eleccion4;
                         cin>>eleccion4;     //FALTA VALIDACION
 
-                        cout<<"Ingrese el nombre de la nueva estacion: "<<endl;
-                        cin>>nombreEstacion;
 
+
+                        existe=true;   //El siguiente ciclo se asegura que ingrese una estacion que no exista
+                        while(existe){
+                            cout<<"Ingrese el nombre de la nueva estacion: "<<endl;
+                            cin>>nombreEstacion;
+                            existe =false;
+                            for(int i=0;i<acum;i++){
+                                if(estacionesTotales[i]==nombreEstacion){
+                                    existe = true;
+                                }
+                            }
+                            if(existe){
+                                cout<<"La estacion que esta intentando crear ya existe, porfavor ingrese otra: "<<endl;
+                            }
+                        }
+
+                        //Agregamos la estacion
                         lineaSel.AgregarEstacionPosicion(Estacion(nombreEstacion, lineaSel.getNombre()),eleccion4);
-                        metro1.getLineas()[eleccion2]=lineaSel;
+                        metro1.getLineas()[eleccion2]=lineaSel; //Actualizamos en el arreglo original de lineas la linea modificada
                     }
                 }
 
