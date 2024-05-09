@@ -5,10 +5,11 @@
 
 
 using namespace std;
+//Prototipos
 int solicitarNumeroEntero(int min, int max);
-
 void mostrar(RedMetro metro1);
 int main()
+
 {
     //Variables predefinidas
  string nombreEstacion;
@@ -44,10 +45,8 @@ int main()
         cout<<"Cualquer otro numero) Salir "<<endl;
         cout<<"Seleccione: "<<endl;
 
-        int eleccion1;  //FALTA VALIDACION
+        int eleccion1;
         cin>>eleccion1;
-
-
 
         Linea lineaSel;
         switch (eleccion1) {
@@ -71,8 +70,6 @@ int main()
                 cout<<"2) Extremo inferior "<<endl;
                 cout<<"3) Posicion intermedia "<<endl;
                 cout<<"Seleccione: "<<endl;
-
-
                 int eleccion3;
                 eleccion3= solicitarNumeroEntero(1,3);
 
@@ -106,18 +103,13 @@ int main()
                         cout<<"La estacion que esta intentando crear ya existe, porfavor ingrese otra: "<<endl;
                             }
                     }
-
-
                         lineaSel.AgregarEstacion(Estacion(nombreEstacion,lineaSel.getNombre()));
                         metro1.getLineas()[eleccion2]=lineaSel;
 
                     break;  //Fin de agregar estacion el entremo arriba
 
 
-                case 2: //Agregar estacion extremo abajo
-
-
-
+                case 2: //Agregar estacion extremo abajo              
                     existe=true;   //El siguiente ciclo se asegura que ingrese una estacion que no exista
                     while(existe){
                         cout<<"Ingrese el nombre de la nueva estacion: "<<endl;
@@ -132,7 +124,6 @@ int main()
                             cout<<"La estacion que esta intentando crear ya existe, porfavor ingrese otra: "<<endl;
                         }
                     }
-
 
                     lineaSel.AgregarEstacionAtras(Estacion(nombreEstacion,lineaSel.getNombre()));
                     metro1.getLineas()[eleccion2]=lineaSel;
@@ -161,9 +152,6 @@ int main()
                         }
                         int eleccion4;
                         eleccion4= solicitarNumeroEntero(1,metro1.getNumLineas());     //FALTA VALIDACION
-
-
-
                         existe=true;   //El siguiente ciclo se asegura que ingrese una estacion que no exista
                         while(existe){
                             cout<<"Ingrese el nombre de la nueva estacion: "<<endl;
@@ -178,13 +166,11 @@ int main()
                                 cout<<"La estacion que esta intentando crear ya existe, porfavor ingrese otra: "<<endl;
                             }
                         }
-
                         //Agregamos la estacion
                         lineaSel.AgregarEstacionPosicion(Estacion(nombreEstacion, lineaSel.getNombre()),eleccion4);
                         metro1.getLineas()[eleccion2]=lineaSel; //Actualizamos en el arreglo original de lineas la linea modificada
                     }
                 }
-
                 break;
             }//Fin case pequeño
 
@@ -210,9 +196,6 @@ int main()
             eleccion5=eleccion5-1;    
             lineaSel.EliminarEstacion(lineaSel.getEstaciones()[eleccion5]);
             metro1.getLineas()[eleccion4]=lineaSel;
-
-
-
             break;//Fin eliminar Estacion
 
         case 3: //Consutar numero de lineas de la red
@@ -244,8 +227,6 @@ int main()
             break;// Fin consultar numeros de estacione en linea
 
         case 5: //Consultar si una estacion pertenece a una linea
-
-
             acum=0;
             for(int i=0;i<metro1.getNumLineas();i++){
                 acum=acum+metro1.getLineas()[i].getNumEstaciones();
@@ -266,12 +247,9 @@ int main()
                 cout<<i+1<<") "<<estacionesTotales[i]<<endl;
             }
 
-
             int eleccion6;
             eleccion6=solicitarNumeroEntero(1,acum);     //Falta validacion
             eleccion6=eleccion6-1;
-
-
 
             nombreEstacion=estacionesTotales[eleccion6];
 
@@ -290,7 +268,6 @@ int main()
 
         case 6: //Agregar linea
 
-
             if(metro1.getNumLineas()<1){    //En dado caso que hallamos eliminado la primera y unica linea
                 metro1.getLineas()[0]= Linea(1);
                 metro1.setNumLineas(1);
@@ -303,11 +280,8 @@ int main()
                 }
                 int eleccion4;
 
-
                 eleccion4=solicitarNumeroEntero(1,metro1.getNumLineas());
-                eleccion4=eleccion4-1;  //Falta validacion-------
-
-
+                eleccion4=eleccion4-1;
 
                 lineaSel = metro1.getLineas()[eleccion4];
                 cout<<"Linea seleccionada: "<<lineaSel.getNombre()<<endl;
@@ -342,17 +316,12 @@ int main()
 
         case 7: //Eliminar linea de la red
             if(metro1.getNumLineas()==1){
-
-
                 metro1.EliminarLinea();
-
             }else{
                 cout<<endl<<"----------------------------------"<<endl;
                 cout<<"No se pueden eliminar lineas ya que todas las lineas ya contienen estaciones de transferencia "<<endl;
                 cout<<endl<<"----------------------------------"<<endl;
             }
-
-
             break;//Fin eliminar linea de la red
 
 
@@ -369,10 +338,7 @@ int main()
 
                 cout<<"La red tiene "<<acum-metro1.getNumLineas()+1<<" estaciones "<<endl;
                 cout<<"-----------------------------------------------------------"<<endl;
-
             }
-
-
             break;
 
         case 9: //Tiempo de una estacion a otra de la misma linea
@@ -387,15 +353,9 @@ int main()
             eleccion2=eleccion2-1;
             lineaSel = metro1.getLineas()[eleccion2];
 
-
-
-
             for (int i=0;i<lineaSel.getNumEstaciones();i++){ //Le restamos uno para que no cuente el extremo mayor
                 cout<<i+1<<") "<<lineaSel.getEstaciones()[i].getNombre()<<endl;
             }
-
-
-
             int eleccion10;
             eleccion10=solicitarNumeroEntero(1,lineaSel.getNumEstaciones());     //FALTA VALIDACION
             eleccion10=eleccion10-1;
@@ -406,7 +366,7 @@ int main()
             eleccion11=eleccion11-1;
             if(eleccion10 == eleccion11){
                 cout<<"---------------------------------------------------------"<<endl;
-                cout<<"No puedes consultar el tiemp de una linea a la misma linea "<<endl;
+                cout<<"No puedes consultar el tiempo de una linea a la misma linea "<<endl;
                 cout<<"---------------------------------------------------------"<<endl;
 
             }else{  // Si se puede encontrar el tiempo
@@ -423,15 +383,10 @@ int main()
                     }
                 }
                 cout<<"---------------------------------------------"<<endl;
-                cout<<"El tiempo que se tarda de la estacion "<<lineaSel.getEstaciones()[eleccion10].getNombre()<<" hasta la estacion "<<lineaSel.getEstaciones()[eleccion11].getNombre()<<" es "<<acum<<endl;
+                cout<<"El tiempo que se tarda de la estacion "<<lineaSel.getEstaciones()[eleccion10].getNombre()<<" hasta la estacion "<<lineaSel.getEstaciones()[eleccion11].getNombre()<<" es "<<acum<<" minutos "<<endl;
                 cout<<"---------------------------------------------"<<endl;
-
             }
-
-
             break;  // Fin tiempo de una estacion a otra de la misma linea
-
-
 
         default:
             cout<<"---------------------------------------------"<<endl;
@@ -442,7 +397,6 @@ int main()
         }
 
         //Para tener mas control de lo que esta pasando
-        mostrar(metro1);
         cout<<"----------------------------------------------------"<<endl;
 
     }
