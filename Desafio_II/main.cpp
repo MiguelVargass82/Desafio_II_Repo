@@ -38,6 +38,7 @@ int main()
         cout<<"6) Agregar una linea a la red  "<<endl;
         cout<<"7) Eliminar una linea de la red  "<<endl;
         cout<<"8) Consultar cuantas estaciones tiene la red  "<<endl;
+        cout<<"9) Consultar tiempo de una estacion a otra de la misma linea "<<endl;
         cout<<"Seleccione: "<<endl;
 
         int eleccion1;  //FALTA VALIDACION
@@ -83,13 +84,7 @@ int main()
                     lineaSel.AgregarEstacion(Estacion(nombreEstacion,lineaSel.getNombre()));
                     metro1.getLineas()[eleccion2]=lineaSel;
 
-                    cout<<"Numero de estaciones de la linea "<<lineaSel.getNombre()<<" "<<lineaSel.getNumEstaciones()<<endl;
-                    lineaSel.mostrarEstaciones();
 
-                    for(int i=0; i<lineaSel.getNumEstaciones();i++){
-                        cout<<i+1<<"-"<<lineaSel.getEstaciones()[i].getNombre()<<endl;
-                    }
-                    cout<<endl<<"---------------------------------------------"<<endl;
                     break;  //Fin de agregar estacion el entremo arriba
 
 
@@ -324,8 +319,72 @@ int main()
 
             break;
 
+        case 9: //Tiempo de una estacion a otra de la misma linea
 
-        default:        //Caso 8
+            int eleccion2;
+            cout<<"Seleccione la linea en la cual quiere hacer la consulta: "<<endl;
+            for(int i=0; i<metro1.getNumLineas();i++){
+                cout<<i+1<<") "<<metro1.getLineas()[i].getNombre()<<endl;
+            }
+            cout<<"Seleccione: "<<endl;
+            cin>>eleccion2;                 //FALTA VALIDACION
+            eleccion2=eleccion2-1;
+            lineaSel = metro1.getLineas()[eleccion2];
+
+
+
+
+            for (int i=0;i<lineaSel.getNumEstaciones();i++){ //Le restamos uno para que no cuente el extremo mayor
+                cout<<i+1<<") "<<lineaSel.getEstaciones()[i].getNombre()<<endl;
+            }
+            cout<<"Seleccione: "<<endl;
+
+
+            int eleccion10;
+            cin>>eleccion10;     //FALTA VALIDACION
+            eleccion10=eleccion10-1;
+            cout<<"Seleccione la segunda estacion: "<<endl;
+
+            int eleccion11;
+            cin>>eleccion11;     //FALTA VALIDACION
+            eleccion11=eleccion11-1;
+            if(eleccion10 == eleccion11){
+                cout<<"---------------------------------------------------------"<<endl;
+                cout<<"No puedes consultar el tiemp de una linea a la misma linea "<<endl;
+                cout<<"---------------------------------------------------------"<<endl;
+
+            }else{  // Si se puede encontrar el tiempo
+                 float acum=0;
+                if(eleccion10<eleccion11){
+
+                    for(int i=eleccion10;i<eleccion11;i++){
+                        cout<<"Acum es: "<<acum<<endl;
+                        cout<<"El tiempo siguiente de la estacio "<<lineaSel.getEstaciones()[i].getNombre()<<" es "<<lineaSel.getEstaciones()[i].getTiempoSiguiente()<<endl;
+                        acum=lineaSel.getEstaciones()[i].getTiempoSiguiente()+acum;
+                        cout<<"Acum es: "<<acum<<endl;
+
+                    }
+                }else{
+
+                    for(int i=eleccion11;i<eleccion10;i++){
+                        cout<<"Acum es: "<<acum<<endl;
+                        cout<<"El tiempo siguiente de la estacio "<<lineaSel.getEstaciones()[i].getNombre()<<" es "<<lineaSel.getEstaciones()[i].getTiempoSiguiente()<<endl;
+                        acum=lineaSel.getEstaciones()[i].getTiempoSiguiente()+acum;
+                        cout<<"Acum es: "<<acum<<endl;
+                    }
+                }
+                cout<<"El tiempo que se tarda de la estacion "<<lineaSel.getEstaciones()[eleccion10].getNombre()<<" hasta la estacion "<<lineaSel.getEstaciones()[eleccion11].getNombre()<<" es "<<acum<<endl;
+            }
+
+
+            break;  // Fin tiempo de una estacion a otra de la misma linea
+
+
+
+        default:
+            cout<<"---------------------------------------------"<<endl;
+            cout<<"Selecciona porfavor una opcion valida "<<endl;
+            cout<<"---------------------------------------------"<<endl;
             break;
         }
 
@@ -333,6 +392,7 @@ int main()
         mostrar(metro1);
 
     }
+    cout<<"Seleccione la primera estacion "<<endl;
 
 
 
